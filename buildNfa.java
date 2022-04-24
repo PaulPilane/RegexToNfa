@@ -176,14 +176,24 @@ public class buildNfa {
                 continue;
             }
             for(transition elem : ar){
-                if(elem.to == t.to && elem.transitionSymbol == '$') continue;
-                transition newT = new transition(t.from,elem.to,elem.transitionSymbol);
-                m.get(t.from.index).add(newT);
-                if(elem.transitionSymbol == '$'){
-                    q.add(newT);
+                if(elem.to.index == t.to.index && elem.transitionSymbol == '$') continue;
+                transition newT = new transition(t.from , elem.to , elem.transitionSymbol);
+                if(!containsMy(t.from.index,newT)){
+                    m.get(t.from.index).add(newT);
+                    if(newT.transitionSymbol == '$'){
+                        q.add(newT);
+                    }
                 }
             }
         }
+    }
+
+    private boolean containsMy(int index, transition newT) {
+        for(transition t : m.get(index)){
+            if(t.from.index == newT.from.index && t.to.index == newT.to.index
+                    && t.transitionSymbol == newT.transitionSymbol) return true;
+        }
+        return false;
     }
 
     private boolean checkFor(NFA node, nfaNode to) {
