@@ -1,5 +1,5 @@
 # RegexToNfa
-Regex to NFA converter and simulation of it
+Regex to NFA converter
 
 converter -> build.java
 simulator -> run.java
