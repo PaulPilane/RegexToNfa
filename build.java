@@ -19,7 +19,7 @@ public class build {
     }
 
     private static void toWork(String regex) {
-        Build builder = new Build();
+        Builder builder = new Build();
         Node root = builder.buildTree(insertBraces(regex));
         buildNfa nfa = new buildNfa();
         NFA result = nfa.build(root);
