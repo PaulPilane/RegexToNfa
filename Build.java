@@ -1,6 +1,6 @@
 import java.util.Stack;
 
-public class Build {
+public class Builder {
 
     public Node buildTree(String regex){
         if(regex.length() == 1){
